@@ -28,13 +28,11 @@ const ButtonsContainer = styled.div`
   gap: 1rem;
   width: 100%;
   padding: 1rem 0;
-  background-color: rgba(30, 41, 59, 0.95);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 10;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 `;
 
 function CTAButton() {

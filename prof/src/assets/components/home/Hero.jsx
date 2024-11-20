@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import NavBar from "../home/NavBar";
 import IntroText from "../home/IntroText";
@@ -32,11 +33,16 @@ const HeroCont = styled.div`
 `;
 
 function Hero() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
   return (
     <>
-      <NavBar />
+      <NavBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />{" "}
       <HeroCont>
-        <IntroText />
+        <IntroText isBlurred={isMenuOpen} />{" "}
       </HeroCont>
     </>
   );
