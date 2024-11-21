@@ -16,7 +16,7 @@ const GradientButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    display: inline-block; /* Ensures visibility on small screens */
+    display: inline-block;
     padding: 0.5rem 1rem;
   }
 `;
@@ -27,23 +27,25 @@ const ButtonsContainer = styled.div`
   align-items: center;
   gap: 1rem;
   width: 100%;
-  padding: 1rem 0;
+  padding: 1rem;
+  position: static;
 
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
+  @media (max-width: 768px) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
 `;
 
 function CTAButton() {
   return (
-    <>
-      <ButtonsContainer>
-        <GradientButton variant="resume">Resume</GradientButton>
-        <GradientButton variant="contact">Contact</GradientButton>
-        <GradientButton variant="more">More...</GradientButton>
-      </ButtonsContainer>
-    </>
+    <ButtonsContainer>
+      {/*  <GradientButton variant="resume">Resume</GradientButton>
+        <GradientButton variant="contact">Contact</GradientButton> 
+      <GradientButton variant="more">More...</GradientButton> */}
+    </ButtonsContainer>
   );
 }
 

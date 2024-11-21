@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   HiOutlineMenu,
   HiOutlineX,
@@ -66,10 +67,10 @@ const NavLinks = styled.div`
 
     a {
       font-size: 1rem;
-      color: black;
+      color: white;
 
       &:hover {
-        color: #374151;
+        color: #fbbf24;
       }
     }
   }
@@ -83,33 +84,65 @@ const NavMenuButton = styled.div`
   @media (min-width: 768px) {
     display: none;
   }
+`;
 
-  svg {
-    width: 2rem;
-    height: 2rem;
+const Icon = styled.span`
+  font-size: 1.2rem;
+  color: #030712;
+  margin-right: 1.5rem;
+
+  &:hover {
+    color: #3b82f6;
   }
 `;
 
-function Navbar({ isMenuOpen, toggleMenu }) {
+function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <NavbarContainer>
       <NavMenuButton onClick={toggleMenu}>
-        {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
+        {isMenuOpen ? (
+          <Icon>
+            <HiOutlineX />
+          </Icon>
+        ) : (
+          <Icon>
+            <HiOutlineMenu />
+          </Icon>
+        )}
       </NavMenuButton>
       <NavLinks isMenuOpen={isMenuOpen}>
-        <Link to="/home">
-          <HiOutlineHome />
-          Home
+        <Link to="/" onClick={handleLinkClick}>
+          <Icon>
+            <HiOutlineHome />
+            {"Home "}
+          </Icon>
         </Link>
-        <Link to="/about">
-          <HiOutlineUser /> About
+        <Link to="/about" onClick={handleLinkClick}>
+          <Icon>
+            <HiOutlineUser />
+            {"About "}
+          </Icon>
         </Link>
-        <Link to="/projects">
-          <HiOutlineLibrary />
-          Projects
+        <Link to="/projects" onClick={handleLinkClick}>
+          <Icon>
+            <HiOutlineLibrary />
+            {"Projects "}
+          </Icon>
         </Link>
-        <Link to="/contact">
-          <HiOutlinePhone /> Contacts
+        <Link to="/contact" onClick={handleLinkClick}>
+          <Icon>
+            <HiOutlinePhone /> {"Contacts "}
+          </Icon>
         </Link>
       </NavLinks>
     </NavbarContainer>
