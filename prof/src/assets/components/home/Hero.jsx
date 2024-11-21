@@ -42,7 +42,7 @@ function Hero() {
     <>
       <NavBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />{" "}
       <HeroCont>
-        <IntroText isBlurred={isMenuOpen} />{" "}
+        <IntroText isBlurred={isMenuOpen} />
       </HeroCont>
     </>
   );

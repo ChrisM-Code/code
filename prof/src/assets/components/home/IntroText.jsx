@@ -92,9 +92,9 @@ function IntroText({ isBlurred }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSkillIndex((prevIndex) => (prevIndex + 1) % skills.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isBlurred]);
 
   return (
     <>
