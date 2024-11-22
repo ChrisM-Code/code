@@ -7,9 +7,8 @@ const LayoutContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   font-family: "Arial", sans-serif;
-  background-color: #f9fafb;
-  min-height: 100vh;
   padding: 0 16px;
+  color: black;
 
   @media (max-width: 768px) {
     padding: 0 12px;
@@ -21,9 +20,7 @@ const LayoutContainer = styled.div`
 
   main {
     width: 100%;
-    max-width: 1200px;
     margin: auto;
-    flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;

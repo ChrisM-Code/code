@@ -19,12 +19,13 @@ const NavbarContainer = styled.nav`
   right: 4rem;
   width: 100%;
   height: 4rem;
-  background-color: #1e293b;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #f8fafc;
   display: flex;
   justify-content: space-around; /* Distributes the space between the logo and menu */
   align-items: center;
+
   padding: 0 1rem;
+
   z-index: 1000;
 `;
 
@@ -33,24 +34,30 @@ const NavLinks = styled.div`
   display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
   flex-direction: column;
   gap: 1rem;
-  position: absolute;
+  position: fixed;
   top: 4rem;
-  left: 0;
-  right: 0;
+  left: 0.1rem;
+  right: 0.1rem;
   background-color: #1e293b;
+  border: 1px solid #374151;
   padding: 1rem;
   border-radius: 8px;
+  color: black;
   z-index: 1001;
 
   a {
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
     color: white;
     text-decoration: none;
-    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: "Arial", sans-serif;
 
     &:hover {
       color: #38bdf8;
+      transition: color 0.3s ease;
     }
   }
 
@@ -59,8 +66,12 @@ const NavLinks = styled.div`
     flex-direction: row;
     position: static;
     background-color: transparent;
-    padding: 0;
-    gap: 2rem;
+    border: none;
+    padding: 0rem;
+
+    a {
+      color: black;
+    }
   }
 `;
 
@@ -69,7 +80,7 @@ const NavMenuButton = styled.div`
   display: block;
   font-size: 2rem;
   cursor: pointer;
-  color: white;
+  color: black;
 
   @media (min-width: 768px) {
     display: none;
@@ -86,6 +97,18 @@ const Icon = styled.span`
   &:hover {
     color: #3b82f6;
   }
+`;
+
+// Overlay effect when the menu is open
+const Overlay = styled.div`
+  display: ${({ isMenuOpen }) => (isMenuOpen ? "block" : "none")};
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Behind the menu */
 `;
 
 function Navbar() {
@@ -111,6 +134,8 @@ function Navbar() {
       <NavMenuButton onClick={toggleMenu}>
         {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
       </NavMenuButton>
+
+      <Overlay isMenuOpen={isMenuOpen} onClick={handleLinkClick} />
 
       {/* Navigation links */}
       <NavLinks isMenuOpen={isMenuOpen}>

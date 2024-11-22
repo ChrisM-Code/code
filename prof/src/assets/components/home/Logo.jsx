@@ -24,7 +24,7 @@ const LogoCont = styled.div`
   margin-left: 0.5rem;
   flex-grow: 1;
   font-size: 1.5rem;
-  color: white;
+  color: black;
 
   &:hover {
     color: #3b82f6;

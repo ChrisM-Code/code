@@ -8,29 +8,17 @@ const Homepage = styled.main`
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 1rem;
-  background-color: #f9fafb;
+  padding: 1.5rem;
   font-family: "Arial", sans-serif;
-  color: #333;
-
-  h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    line-height: 1.6rem;
-  }
+  height: 100vh;
 
   a {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    margin-top: 0rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
+    padding: 1rem 2rem;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: white;
+    background-color: #0ea5e9;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
@@ -41,13 +29,18 @@ const Homepage = styled.main`
   }
 
   @media (max-width: 768px) {
-    p {
-      font-size: 1rem;
-    }
+    padding: 1rem; /* Reduced padding on small screens */
 
     a {
-      font-size: 0.9rem;
-      padding: 0.6rem 1.2rem;
+      font-size: 1rem; /* Make button text a bit smaller */
+      padding: 0.8rem 1.6rem; /* Adjust button size */
+    }
+  }
+
+  @media (max-width: 480px) {
+    a {
+      font-size: 0.9rem; /* Button text smaller */
+      padding: 0.6rem 1.2rem; /* Further reduce button size */
     }
   }
 `;
