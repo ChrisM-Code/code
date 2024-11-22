@@ -16,13 +16,14 @@ const NavbarContainer = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
+  right: 4rem;
   width: 100%;
   height: 4rem;
   background-color: #1e293b;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   display: flex;
+  justify-content: space-around; /* Distributes the space between the logo and menu */
   align-items: center;
-  justify-content: space-between;
   padding: 0 1rem;
   z-index: 1000;
 `;
@@ -32,7 +33,7 @@ const NavLinks = styled.div`
   display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
   flex-direction: column;
   gap: 1rem;
-  position: fixed;
+  position: absolute;
   top: 4rem;
   left: 0;
   right: 0;
@@ -87,17 +88,6 @@ const Icon = styled.span`
   }
 `;
 
-// Styling for the logo container
-const LogoCont = styled.div`
-  gap: 0.5rem;
-  font-size: 1.2rem;
-  color: white;
-
-  &:hover {
-    color: #3b82f6;
-  }
-`;
-
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -114,10 +104,9 @@ function Navbar() {
   return (
     <NavbarContainer>
       {/* Logo */}
-      <LogoCont>
+      <>
         <Logo />
-      </LogoCont>
-
+      </>
       {/* Menu button on mobile */}
       <NavMenuButton onClick={toggleMenu}>
         {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
