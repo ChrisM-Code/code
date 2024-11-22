@@ -19,9 +19,7 @@ const StyledLogo = styled(Link)`
 `;
 
 function Logo() {
-  const handleLinkClick = () => {
-    console.log("Navigating to Landing Page");
-  };
+  const handleLinkClick = () => {};
 
   return (
     <StyledLogo to="/" onClick={handleLinkClick}>

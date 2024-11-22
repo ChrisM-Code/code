@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "./Logo";
 
+// Container for the Navbar
 const NavbarContainer = styled.nav`
   position: fixed;
   top: 0;
@@ -23,20 +24,19 @@ const NavbarContainer = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-
   z-index: 1000;
 `;
 
+// Styling for the links container
 const NavLinks = styled.div`
   display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
   flex-direction: column;
   gap: 1rem;
   position: fixed;
   top: 4rem;
-  left: 1rem;
-  right: 1rem;
+  left: 0;
+  right: 0;
   background-color: #1e293b;
-  border: 1px solid #374151;
   padding: 1rem;
   border-radius: 8px;
   z-index: 1001;
@@ -44,8 +44,9 @@ const NavLinks = styled.div`
   a {
     font-size: 1rem;
     text-align: center;
-    color: black;
+    color: white;
     text-decoration: none;
+    padding: 0.5rem;
 
     &:hover {
       color: #38bdf8;
@@ -57,35 +58,36 @@ const NavLinks = styled.div`
     flex-direction: row;
     position: static;
     background-color: transparent;
-    border: none;
     padding: 0;
-    gap: 2rem; /* Added spacing between the links */
+    gap: 2rem;
   }
 `;
 
+// Menu button for smaller screens
 const NavMenuButton = styled.div`
   display: block;
   font-size: 2rem;
   cursor: pointer;
-  color: black;
+  color: white;
 
   @media (min-width: 768px) {
     display: none;
   }
 `;
 
+// Styling for the icon next to the link text
 const Icon = styled.span`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 1.2rem;
-  color: white;
 
   &:hover {
     color: #3b82f6;
   }
 `;
 
+// Styling for the logo container
 const LogoCont = styled.div`
   gap: 0.5rem;
   font-size: 1.2rem;
@@ -99,39 +101,46 @@ const LogoCont = styled.div`
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Toggle the menu open/close on mobile
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
   };
 
+  // Close the menu when a link is clicked
   const handleLinkClick = () => {
-    setIsMenuOpen(false); // Close the menu after clicking a link
+    setIsMenuOpen(false);
   };
 
   return (
     <NavbarContainer>
+      {/* Logo */}
       <LogoCont>
         <Logo />
       </LogoCont>
+
+      {/* Menu button on mobile */}
       <NavMenuButton onClick={toggleMenu}>
         {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
       </NavMenuButton>
-      <NavLinks>
-        <Link to="/home" onClick={() => handleLinkClick("Home")}>
+
+      {/* Navigation links */}
+      <NavLinks isMenuOpen={isMenuOpen}>
+        <Link to="/home" onClick={handleLinkClick}>
           <Icon>
             <HiOutlineHome /> Home
           </Icon>
         </Link>
-        <Link to="/about" onClick={() => handleLinkClick("About")}>
+        <Link to="/about" onClick={handleLinkClick}>
           <Icon>
             <HiOutlineUser /> About
           </Icon>
         </Link>
-        <Link to="/projects" onClick={() => handleLinkClick("Projects")}>
+        <Link to="/projects" onClick={handleLinkClick}>
           <Icon>
             <HiOutlineLibrary /> Projects
           </Icon>
         </Link>
-        <Link to="/contact" onClick={() => handleLinkClick("Contact")}>
+        <Link to="/contact" onClick={handleLinkClick}>
           <Icon>
             <HiOutlinePhone /> Contact
           </Icon>
