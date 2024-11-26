@@ -1,0 +1,225 @@
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import styled from "styled-components";
+
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+`;
+
+const Title = styled.h1`
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const FormWrapper = styled.div`
+  width: 100%;
+  max-width: 768px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+  }
+`;
+
+const Label = styled.label`
+  font-weight: bold;
+  color: #555;
+  font-size: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
+`;
+
+const Textarea = styled.textarea`
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px;
+  }
+`;
+
+const ErrorMessage = styled.p`
+  color: red;
+  font-size: 0.9rem;
+`;
+
+const Button = styled.button`
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: ${(props) => (props.disabled ? "#ccc" : "#007bff")};
+  border: none;
+  border-radius: 4px;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: ${(props) => (props.disabled ? "#ccc" : "#0056b3")};
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+  }
+`;
+
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState(""); // State to manage error message
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === "email") {
+      setErrorMessage(""); // Clear error when user starts typing
+    }
+  };
+
+  const mutation = useMutation({
+    mutationFn: (data) => {
+      return fetch("https://--", {
+        // Ensure this URL is correctcd
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to send email");
+        }
+        return response.json();
+      });
+    },
+    onSuccess: () => {
+      alert("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    },
+    onError: () => {
+      alert("Failed to send message. Please try again.");
+    },
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+    if (!emailPattern.test(formData.email)) {
+      setErrorMessage("Please enter a valid email address."); // Set error message
+      return;
+    }
+
+    mutation.mutate(formData);
+  };
+
+  return (
+    <Container>
+      <Title>Contact Me</Title>
+      <FormWrapper>
+        <Form onSubmit={handleSubmit}>
+          <Label htmlFor="name">Name</Label>
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your Name"
+            value={formData.name}
+            onChange={handleInputChange}
+            required
+          />
+
+          <Label htmlFor="email">Email</Label>
+          <Input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Please enter a valid email address."
+          />
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+
+          <Label htmlFor="message">Message</Label>
+          <Textarea
+            id="message"
+            name="message"
+            placeholder="Your Message"
+            rows="5"
+            value={formData.message}
+            onChange={handleInputChange}
+            required
+          ></Textarea>
+          <Button type="submit" disabled={mutation.isLoading}>
+            {mutation.isLoading ? "Sending..." : "Send"}
+          </Button>
+        </Form>
+      </FormWrapper>
+    </Container>
+  );
+};
+
+export default ContactForm;

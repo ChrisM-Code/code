@@ -15,7 +15,7 @@ const Heading = styled.h1`
   text-align: center;
 
   @media (min-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.2remrem;
   }
 `;
 

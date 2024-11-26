@@ -15,7 +15,7 @@ const Heading = styled.h1`
   text-align: center;
 
   @media (min-width: 768px) {
-    font-size: 2rem;
+    font-size: 1.2remrem;
   }
 `;
 
@@ -33,10 +33,14 @@ function Skills() {
   return (
     <SkillContainer>
       <Heading>Skills</Heading>
-      <Text>lorem10</Text>
-
       <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos tenetur
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga est
+        accusantium velit, enim a, pariatur quibusdam cumque commodi neque minus
+        optio facere assumenda reprehenderit eius. Sed harum quae incidunt
+        repellendus.
+      </Text>
+      <Text>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque, alias!
       </Text>
     </SkillContainer>
   );

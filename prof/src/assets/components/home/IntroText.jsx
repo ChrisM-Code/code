@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import CTAButton from "./CTAButton";
-
 const IntroContainer = styled.div`
   text-align: center;
   padding: 1rem;
@@ -124,7 +122,6 @@ function IntroText({ isBlurred }) {
           voluptas tempora minima enim doloribus nobis recusandae sequi vero
           itaque ex repudiandae molestias beatae, nesciunt ducimus fugit?
         </Description>
-        <CTAButton />
       </IntroContainer>
     </>
   );

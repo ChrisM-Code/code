@@ -3,6 +3,20 @@ import styled from "styled-components";
 import NavBar from "../home/NavBar";
 import IntroText from "../home/IntroText";
 
+const HomeContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #1e293b;
+  padding: 2rem 1rem;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    padding: 4rem 2rem;
+  }
+`;
+
 const HeroCont = styled.div`
   top: 0;
   left: 0;
@@ -14,7 +28,7 @@ const HeroCont = styled.div`
   position: relative;
   width: 100%;
   padding: 1rem;
-  margin-top: 5rem; /* Adjusted to account for fixed navbar height */
+  margin-top: 1rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -39,12 +53,12 @@ function Hero() {
     setIsMenuOpen(!isMenuOpen);
   };
   return (
-    <>
+    <HomeContainer>
       <NavBar isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />{" "}
       <HeroCont>
         <IntroText isBlurred={isMenuOpen} />
       </HeroCont>
-    </>
+    </HomeContainer>
   );
 }
 
