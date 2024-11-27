@@ -1,39 +1,64 @@
 import { Outlet } from "react-router-dom";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyles = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Prevent scrolling on the main page */
+    font-family: "Arial", sans-serif;
+  }
+
+  #root {
+    height: 100%; /* Ensure the root element occupies full height */
+  }
+`;
 
 const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  font-family: "Arial", sans-serif;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
   padding: 0 16px;
-  color: black;
+  box-sizing: border-box;
 
   @media (max-width: 768px) {
-    padding: 0 12px;
+    padding: 10px;
   }
 
   @media (max-width: 480px) {
-    padding: 0 8px;
+    padding: 8px;
   }
 
   main {
     width: 100%;
-    margin: auto;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 `;
 
 function Applayout() {
   return (
-    <LayoutContainer>
-      <main>
-        <Outlet />
-      </main>
-    </LayoutContainer>
+    <>
+      <GlobalStyles />
+      <LayoutContainer>
+        <main>
+          <Outlet />
+        </main>
+      </LayoutContainer>
+    </>
   );
 }
 

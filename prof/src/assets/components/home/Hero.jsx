@@ -10,7 +10,6 @@ const HomeContainer = styled.div`
   justify-content: center;
   color: #1e293b;
   padding: 2rem 1rem;
-  overflow: hidden;
 
   @media (min-width: 768px) {
     padding: 4rem 2rem;

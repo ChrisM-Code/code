@@ -12,12 +12,12 @@ const Homepage = styled.main`
   font-family: "Arial", sans-serif;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 1rem; /* Add padding for spacing */
 
   a {
     display: inline-block;
-    padding: 1rem;
-    margin-top: 1rem;
+    padding: 0.5rem;
     font-size: 1.1rem;
     color: white;
     background-color: #0ea5e9;
@@ -31,6 +31,7 @@ const Homepage = styled.main`
     }
   }
 
+  /* Responsive styles */
   @media (max-width: 768px) {
     padding: 1rem;
 
@@ -41,6 +42,8 @@ const Homepage = styled.main`
   }
 
   @media (max-width: 480px) {
+    padding: 0.5rem;
+
     a {
       font-size: 0.9rem;
       padding: 0.6rem;

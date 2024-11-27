@@ -7,10 +7,19 @@ const ProjectContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: #1e293b;
-  padding: 2rem 1rem;
+  padding: 1rem;
+  margin: auto;
+  width: 100%;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: transform 0.3s ease;
 
-  @media (min-width: 768px) {
-    padding: 4rem 2rem;
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 3rem 2rem;
   }
 `;
 

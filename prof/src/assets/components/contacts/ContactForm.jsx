@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
+  margin-top: 1rem;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -20,25 +21,36 @@ const Container = styled.div`
 const Title = styled.h1`
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 20px;
+  line-height: 1.2rem;
+  margin-bottom: 1rem;
   color: #333;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 480px) {
+    font-size: 1.5rem; /* Further adjust for very small screens */
+    margin-bottom: 0.75rem;
   }
 `;
 
 const FormWrapper = styled.div`
   width: 100%;
-  max-width: 768px;
-  background-color: white;
+
+  max-width: 600px; /* Updated max-width for better form layout */
+  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   box-sizing: border-box;
 
   @media (max-width: 768px) {
-    padding: 1.5rem;
+    padding: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem; /* Ensure padding adapts for smaller screens */
   }
 `;
 
@@ -59,6 +71,10 @@ const Label = styled.label`
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    gap: 0.5rem;
   }
 `;
 
@@ -96,6 +112,7 @@ const Textarea = styled.textarea`
 const ErrorMessage = styled.p`
   color: red;
   font-size: 0.9rem;
+  margin: -0.5rem 0 0.5rem; /* Adjust spacing for alignment */
 `;
 
 const Button = styled.button`
@@ -126,20 +143,19 @@ const ContactForm = () => {
     message: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState(""); // State to manage error message
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (name === "email") {
-      setErrorMessage(""); // Clear error when user starts typing
+      setErrorMessage("");
     }
   };
 
   const mutation = useMutation({
     mutationFn: (data) => {
-      return fetch("https://--", {
-        // Ensure this URL is correctcd
+      return fetch("https://your-api-endpoint.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -166,7 +182,7 @@ const ContactForm = () => {
 
     const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
     if (!emailPattern.test(formData.email)) {
-      setErrorMessage("Please enter a valid email address."); // Set error message
+      setErrorMessage("Please enter a valid email address.");
       return;
     }
 
@@ -175,8 +191,8 @@ const ContactForm = () => {
 
   return (
     <Container>
-      <Title>Contact Me</Title>
       <FormWrapper>
+        <Title>Contact Me</Title>
         <Form onSubmit={handleSubmit}>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -198,8 +214,6 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleInputChange}
             required
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-            title="Please enter a valid email address."
           />
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
 
