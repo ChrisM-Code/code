@@ -9,7 +9,7 @@ const Container = styled.div`
   height: 100%;
   box-sizing: border-box;
   min-height: 100vh;
-  padding: 2rem 0;
+  padding: 2rem 0rem;
   overflow-y: auto;
 
   @media (min-width: 768px) {

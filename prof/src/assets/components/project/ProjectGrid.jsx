@@ -17,11 +17,11 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  padding: 1rem; /* Add padding to prevent content from touching edges */
+  padding: 1rem; 
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  box-sizing: border-box; /* Ensure padding is included in total width */
+  box-sizing: border-box; 
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
