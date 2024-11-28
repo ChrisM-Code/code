@@ -1,33 +1,41 @@
 import styled from "styled-components";
-import ProjectCard from "./ProjectCard";
+import ProjectGrid from "./ProjectGrid";
+import { ProjectsProvider } from "./ProjectContext";
 
-const ProjectContainer = styled.div`
+const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  color: #1e293b;
-  padding: 1rem;
-  margin: auto;
+  justify-content: flex-start;
   width: 100%;
-  border-radius: 10px;
-  background-color: #fff;
-  transition: transform 0.3s ease;
+  padding: 1rem 1rem; /* Add spacing around the page */
+  gap: 1rem; /* Space between heading and project container */
 
   @media (max-width: 768px) {
-    padding: 2rem 1.5rem;
+    padding: 1rem; /* Reduce padding on smaller screens */
+    gap: 1.5rem;
   }
+`;
 
-  @media (min-width: 1024px) {
-    padding: 3rem 2rem;
+const Heading = styled.h1`
+  font-size: 2.5rem;
+  text-align: center;
+  color: #0f172a;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem; /* Adjust font size for smaller screens */
   }
 `;
 
 function Project() {
   return (
-    <ProjectContainer>
-      <ProjectCard />
-    </ProjectContainer>
+    <ProjectsProvider>
+      <PageContainer>
+        <Heading>My Projects</Heading>
+        <ProjectGrid />
+      </PageContainer>
+    </ProjectsProvider>
   );
 }
 

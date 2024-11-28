@@ -11,7 +11,6 @@ const GlobalStyles = createGlobalStyle`
   html, body {
     height: 100%;
     width: 100%;
-    overflow: hidden; /* Prevent scrolling on the main page */
     font-family: "Arial", sans-serif;
   }
 
