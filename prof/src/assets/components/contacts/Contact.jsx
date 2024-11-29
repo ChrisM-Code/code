@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ContactForm from "./ContactForm";
+import SocialLinks from "./SocialLinks";
 
 const ContactContainer = styled.div`
   display: flex;
@@ -38,6 +39,7 @@ function Contact() {
       <FormWrapper>
         <ContactForm />
       </FormWrapper>
+      <SocialLinks />
     </ContactContainer>
   );
 }
