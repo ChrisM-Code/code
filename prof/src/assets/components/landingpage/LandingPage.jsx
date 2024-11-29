@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntroText from "../home/IntroText";
+import Footer from "../../ui/Footer";
 
 const Homepage = styled.main`
   position: fixed;
@@ -53,10 +54,13 @@ const Homepage = styled.main`
 
 function LandingPage() {
   return (
-    <Homepage>
-      <IntroText />
-      <Link to="/about">Learn More</Link>
-    </Homepage>
+    <>
+      <Homepage>
+        <IntroText />
+        <Link to="/about">Learn More</Link>
+      </Homepage>
+      <Footer />
+    </>
   );
 }
 
