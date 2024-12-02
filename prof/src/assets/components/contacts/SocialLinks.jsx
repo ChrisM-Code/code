@@ -3,17 +3,33 @@ import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const SocialLinksWrapper = styled.div`
   display: flex;
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
 `;
 
 const SocialLink = styled.a`
   text-decoration: none;
   color: #555;
-  font-size: 24px;
-  transition: color 0.3s;
+  font-size: 28px;
+  transition: transform 0.3s ease, color 0.3s ease;
 
   &:hover {
-    color: ${(props) => props.hoverColor}; /* Use the hover color from props */
+    color: ${(props) => props.hoverColor};
+    transform: scale(1.2); /* Subtle zoom effect */
+  }
+
+  @media (max-width: 480px) {
+    font-size: 24px; /* Adjust size for smaller screens */
   }
 `;
 
@@ -24,7 +40,7 @@ const SocialLinks = () => {
         href="https://github.com/yourusername"
         target="_blank"
         aria-label="GitHub"
-        hoverColor="#171515" /* GitHub's original color */
+        hoverColor="#171515"
       >
         <FaGithub />
       </SocialLink>
@@ -32,7 +48,7 @@ const SocialLinks = () => {
         href="https://linkedin.com/in/yourusername"
         target="_blank"
         aria-label="LinkedIn"
-        hoverColor="#0077b5" /* LinkedIn's original color */
+        hoverColor="#0077b5"
       >
         <FaLinkedin />
       </SocialLink>
@@ -40,7 +56,7 @@ const SocialLinks = () => {
         href="https://twitter.com/yourusername"
         target="_blank"
         aria-label="Twitter"
-        hoverColor="#1DA1F2" /* Twitter's original color */
+        hoverColor="#1DA1F2"
       >
         <FaTwitter />
       </SocialLink>
@@ -48,7 +64,7 @@ const SocialLinks = () => {
         href="https://instagram.com/yourusername"
         target="_blank"
         aria-label="Instagram"
-        hoverColor="#DD2A7B" /* Instagram original color */
+        hoverColor="#DD2A7B"
       >
         <FaInstagram />
       </SocialLink>
