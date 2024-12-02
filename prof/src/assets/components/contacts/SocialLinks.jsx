@@ -6,7 +6,7 @@ const SocialLinksWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  margin: 20px 0;
+  margin: 10px 0;
 
   @media (max-width: 768px) {
     gap: 15px;

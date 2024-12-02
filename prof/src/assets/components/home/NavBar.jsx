@@ -53,7 +53,7 @@ const NavLinks = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: "Arial", sans-serif;
+    font-family: "Times New Roman", serif;
 
     &:hover {
       color: #38bdf8;

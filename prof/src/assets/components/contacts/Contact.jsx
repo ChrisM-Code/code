@@ -13,6 +13,7 @@ const ContactContainer = styled.div`
   padding: 2rem 1rem;
   box-sizing: border-box;
   overflow: hidden;
+  font-family: "Times New Roman", serif;
 
   @media (min-width: 1200px) {
     flex-direction: row; /* Align form and social links side by side */

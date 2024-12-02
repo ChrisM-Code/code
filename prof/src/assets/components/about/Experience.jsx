@@ -15,7 +15,13 @@ const Heading = styled.h1`
   text-align: center;
 
   @media (min-width: 768px) {
-    font-size: 1.2remrem;
+    font-size: 1.2rem;
+  }
+
+  span {
+    display: inline-block;
+    color: #262626;
+    font-style: normal;
   }
 `;
 
@@ -32,7 +38,9 @@ const Text = styled.p`
 function Experience() {
   return (
     <ExpContainer>
-      <Heading>Experience</Heading>
+      <Heading>
+        <span>Experience</span>
+      </Heading>
       <Text>Lorem20</Text>
 
       <Text>

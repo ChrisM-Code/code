@@ -24,14 +24,20 @@ const Title = styled.h1`
   line-height: 1.2rem;
   margin-bottom: 1rem;
   color: #333;
+  font-family: "Papyrus", Fantasy;
 
   @media (max-width: 768px) {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 1rem;
   }
   @media (max-width: 480px) {
     font-size: 1.5rem; /* Further adjust for very small screens */
     margin-bottom: 0.75rem;
+  }
+  span {
+    display: inline-block;
+    color: #007bff;
+    font-style: normal;
   }
 `;
 
@@ -192,7 +198,9 @@ const ContactForm = () => {
   return (
     <Container>
       <FormWrapper>
-        <Title>Contact Me</Title>
+        <Title>
+          <span>Contact</span> Me
+        </Title>
         <Form onSubmit={handleSubmit}>
           <Label htmlFor="name">Name</Label>
           <Input

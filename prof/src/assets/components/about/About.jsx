@@ -11,7 +11,7 @@ const AboutContainer = styled.div`
   color: #1e293b;
   width: 100%;
   height: 100%;
-  padding: 1.5rem 1rem; /* Slightly reduced padding for smaller screens */
+  padding: 2rem 1rem;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
@@ -20,33 +20,42 @@ const AboutContainer = styled.div`
 `;
 
 const Heading = styled.h1`
-  font-size: 1.6rem; /* Smaller initial font size for small screens */
-  font-weight: bold;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Papyrus", Fantasy;
   color: #0f172a;
+  text-transform: capitalize;
   margin-top: 2rem;
   text-align: center;
+  letter-spacing: 0.05em;
 
   @media (min-width: 768px) {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+
+  span {
+    display: inline-block;
+    color: #007bff;
+    font-style: normal;
   }
 `;
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column; /* Single-column layout for small screens */
-  gap: 1.5rem; /* Reduced gap for smaller viewports */
+  flex-direction: column;
+  gap: 1.5rem;
   width: 100%;
   margin-top: 2rem;
 
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem; /* Larger gap for medium+ screens */
+    gap: 2rem;
   }
 `;
 
 const Section = styled.div`
-  padding: 1rem; /* Reduced padding for smaller screens */
+  padding: 1.2rem;
   border-radius: 8px;
   background-color: #f9fafb;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -59,23 +68,24 @@ const Section = styled.div`
 
   p {
     color: #1e293b;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    font-family: "Times New Roman", serif;
+    font-size: 1rem;
+    line-height: 1.6;
 
     @media (min-width: 480px) {
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
   }
 `;
 
 const ResumeSection = styled.div`
-  margin-top: 2rem; /* Reduced margin for better balance on small screens */
+  margin-top: 2rem;
   text-align: center;
 
   a {
     display: inline-block;
-    padding: 0.6rem 1.2rem; /* Reduced padding for smaller buttons */
-    font-size: 0.9rem; /* Adjusted font size for small screens */
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
     color: #fff;
     background-color: #007bff;
     border-radius: 5px;
@@ -91,7 +101,9 @@ const ResumeSection = styled.div`
 function About() {
   return (
     <AboutContainer>
-      <Heading>About</Heading>
+      <Heading>
+        <span>About</span> Me
+      </Heading>
       <Container>
         <Section>
           <Skills />

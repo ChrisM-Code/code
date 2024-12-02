@@ -17,6 +17,12 @@ const Heading = styled.h1`
   @media (min-width: 768px) {
     font-size: 1.2remrem;
   }
+
+  span {
+    display: inline-block;
+    color: #171717;
+    font-style: normal;
+  }
 `;
 
 const Text = styled.p`
@@ -32,7 +38,9 @@ const Text = styled.p`
 function Skills() {
   return (
     <SkillContainer>
-      <Heading>Skills</Heading>
+      <Heading>
+        <span>Skills</span>
+      </Heading>
       <Text>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga est
         accusantium velit, enim a, pariatur quibusdam cumque commodi neque minus

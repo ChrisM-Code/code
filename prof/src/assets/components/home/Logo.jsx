@@ -25,9 +25,12 @@ const LogoCont = styled.div`
   flex-grow: 1;
   font-size: 1.5rem;
   color: black;
+  font-family: "Lucida Handwriting", Cursive;
 
-  &:hover {
-    color: #3b82f6;
+  span {
+    display: inline-block;
+    color: #7c2d12;
+    font-style: normal;
   }
 `;
 
@@ -36,7 +39,9 @@ function Logo() {
 
   return (
     <StyledLogo to="/" onClick={handleLinkClick}>
-      <LogoCont>Code </LogoCont>
+      <LogoCont>
+        <span>Code</span>{" "}
+      </LogoCont>
     </StyledLogo>
   );
 }

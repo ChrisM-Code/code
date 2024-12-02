@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TbFileDownload } from "react-icons/tb";
 
 const GradientButton = styled.button`
   background: ${(props) =>
@@ -40,7 +41,9 @@ const ButtonsContainer = styled.div`
 function DownloadResume() {
   return (
     <ButtonsContainer>
-      <GradientButton variant="cv">Download CV</GradientButton>
+      <GradientButton variant="cv">
+        Download CV <TbFileDownload />
+      </GradientButton>
     </ButtonsContainer>
   );
 }

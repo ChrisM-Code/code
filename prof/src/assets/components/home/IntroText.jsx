@@ -12,6 +12,7 @@ const IntroContainer = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   transition: filter 0.3s ease;
+  font-family: "Times New Roman", serif;
 
   ${({ isBlurred }) =>
     isBlurred &&
