@@ -3,14 +3,14 @@ import ProjectGrid from "./ProjectGrid";
 import styled from "styled-component";
 
 const Container = styled.div`
-  justify-content: flex-start;
-  color: #1e293b;
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  height: 100%;
-  box-sizing: border-box;
   min-height: 100vh;
-  padding: 2rem 0rem;
-  overflow-y: auto;
+  padding: 2rem 1rem;
+  background-color: #f8fafc;
 
   @media (min-width: 768px) {
     padding: 4rem 2rem;
@@ -20,11 +20,9 @@ const Container = styled.div`
 function ProjectCard() {
   return (
     <ProjectsProvider>
-      <>
-        <Container>
-          <ProjectGrid />
-        </Container>
-      </>
+      <Container>
+        <ProjectGrid />
+      </Container>
     </ProjectsProvider>
   );
 }

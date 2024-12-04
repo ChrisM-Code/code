@@ -23,9 +23,7 @@ const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-around; /* Distributes the space between the logo and menu */
   align-items: center;
-
   padding: 0 1rem;
-
   z-index: 1000;
 `;
 

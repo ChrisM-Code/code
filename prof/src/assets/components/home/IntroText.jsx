@@ -10,6 +10,7 @@ const IntroContainer = styled.div`
   text-align: ce m nter;
   padding: 1rem;
   box-sizing: border-box;
+
   overflow: hidden;
   transition: filter 0.3s ease;
   font-family: "Times New Roman", serif;

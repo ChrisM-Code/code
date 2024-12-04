@@ -8,31 +8,33 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  padding: 1rem 1rem; /* Add spacing around the page */
-  gap: 1rem; /* Space between heading and project container */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  gap: 0.9rem;
 
   @media (max-width: 768px) {
-    padding: 1rem; /* Reduce padding on smaller screens */
-    gap: 1.5rem;
+    padding: 1rem;
+    gap: 1.2rem;
   }
 `;
 
 const Heading = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-align: center;
   color: #0f172a;
-  margin-bottom: 1rem;
+  margin: 0 0 0.5rem 0;
 
   @media (max-width: 768px) {
-    font-size: 2rem; /* Adjust font size for smaller screens */
+    font-size: 1.5rem;
   }
 `;
-
 function Project() {
   return (
     <ProjectsProvider>
+      <Heading>My Project</Heading>
       <PageContainer>
-        <Heading>My Projects</Heading>
         <ProjectGrid />
       </PageContainer>
     </ProjectsProvider>

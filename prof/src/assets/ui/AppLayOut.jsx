@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     width: 100%;
     font-family: "Arial", sans-serif;
+    transition: background-color 0.3s, color 0.3s;
   }
 
   #root {

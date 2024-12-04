@@ -6,7 +6,8 @@ const StyledLogo = styled(Link)`
   font-size: 1.2rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: white; /* White color for logo text */
+  color: ${(props) => props.theme.text};
+
   text-decoration: none;
   transition: color 0.3s ease, transform 0.3s ease;
   text-align: left;

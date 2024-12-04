@@ -1,10 +1,10 @@
 import { createContext, useContext } from "react";
-import PropTypes from "prop-types"; // Import PropTypes
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
-// Sample projects data
 const projects = [
   {
-    name: "Travell Web",
+    name: "Travell ",
     github: "https://github.com/Rekcah-Chris/WorldWise.git",
     live: "https://yourportfolio.com",
     description:
@@ -45,24 +45,34 @@ const projects = [
   },
 ];
 
-// Create Context
 const ProjectsContext = createContext();
 
-// Provider Component
+const StyledProviderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+`;
+
 export const ProjectsProvider = ({ children }) => {
   return (
     <ProjectsContext.Provider value={projects}>
-      {children}
+      <StyledProviderContainer>{children}</StyledProviderContainer>
     </ProjectsContext.Provider>
   );
 };
 
-// Prop validation
 ProjectsProvider.propTypes = {
-  children: PropTypes.node.isRequired, // Validate children prop
+  children: PropTypes.node.isRequired,
 };
 
-// Custom Hook to use the context
 export const useProjects = () => {
   const context = useContext(ProjectsContext);
   if (!context) {

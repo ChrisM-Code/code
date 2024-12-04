@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { useProjects } from "../project/ProjectContext"; // Import the context
+import { useProjects } from "../project/ProjectContext";
 
 const slideIn = keyframes`
   0% {
@@ -15,13 +15,18 @@ const slideIn = keyframes`
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  padding: 1rem; 
+  padding: 1.2rem;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    /* Handle very small screens */
+    grid-template-columns: 1fr;
+  }
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
@@ -33,46 +38,42 @@ const GridContainer = styled.div`
 `;
 
 const ProjectContainer = styled.div`
-  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.2rem;
   border: 1px solid #e2e8f0;
   border-radius: 10px;
   animation: ${slideIn} 0.8s ease-out forwards;
-  opacity: 0;
-  transform: translateX(100%);
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
-  text-align: center;
 
   &:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
 `;
 
 const ProjectImage = styled.img`
   width: 100%;
-  max-width: 12rem;
+  max-width: 180px;
   height: auto;
-  border-radius: 8rem;
+  border-radius: 50%;
   margin-bottom: 1rem;
-
-  @media (min-width: 768px) {
-    max-width: 6rem; // Adjust size for medium screens
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 12rem; // Adjust size for larger screens
-  }
 `;
 
 const LinkButton = styled.a`
   display: inline-block;
   text-decoration: none;
   color: #fff;
-  padding: 10px 15px;
+  padding: 8px 16px;
   border-radius: 5px;
-  margin: 5px;
+  margin: 0.5rem;
   background-color: ${(props) => props.bgColor || "#0070f3"};
   font-weight: bold;
+  font-size: 0.9rem;
 
   &:hover {
     opacity: 0.9;
@@ -80,7 +81,6 @@ const LinkButton = styled.a`
 `;
 
 const ShowMoreButton = styled.button`
-  display: flex;
   margin: 2rem auto 0;
   padding: 10px 20px;
   background-color: #0070f3;
@@ -90,10 +90,42 @@ const ShowMoreButton = styled.button`
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
-  overflow-y: auto;
 
   &:hover {
     background-color: #005bb5;
+  }
+`;
+
+const Heading2 = styled.h2`
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin: 0.5rem 0;
+  text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const TextP = styled.p`
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0.5rem 0 1rem;
+  text-align: center;
+  line-height: 1.2rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+`;
+
+const ButtonCont = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: 480px) {
+    flex-direction: row;
+    align-items: center;
   }
 `;
 
@@ -122,9 +154,9 @@ const ProjectGrid = () => {
             }}
           >
             <ProjectImage src={project.image} alt={project.name} />
-            <h2>{project.name}</h2>
-            <p>{project.description}</p>
-            <div>
+            <Heading2>{project.name}</Heading2>
+            <TextP>{project.description}</TextP>
+            <ButtonCont>
               <LinkButton
                 href={project.github}
                 target="_blank"
@@ -135,7 +167,7 @@ const ProjectGrid = () => {
               <LinkButton href={project.live} target="_blank" bgColor="#28a745">
                 Live Demo
               </LinkButton>
-            </div>
+            </ButtonCont>
           </ProjectContainer>
         ))}
       </GridContainer>
