@@ -16,12 +16,12 @@ const NavbarContainer = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
-  right: 4rem;
+  right: 0;
   width: 100%;
   height: 4rem;
   background-color: #f8fafc;
   display: flex;
-  justify-content: space-around; /* Distributes the space between the logo and menu */
+  justify-content: space-around; 
   align-items: center;
   padding: 0 1rem;
   z-index: 1000;
@@ -32,7 +32,7 @@ const NavLinks = styled.div`
   display: ${({ isMenuOpen }) => (isMenuOpen ? "flex" : "none")};
   flex-direction: column;
   gap: 1rem;
-  position: fixed;
+  position: absolute;
   top: 4rem;
   left: 0.1rem;
   right: 0.1rem;
@@ -106,7 +106,7 @@ const Overlay = styled.div`
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999; /* Behind the menu */
+  z-index: 999;
 `;
 
 function Navbar() {
@@ -128,6 +128,7 @@ function Navbar() {
       <>
         <Logo />
       </>
+
       {/* Menu button on mobile */}
       <NavMenuButton onClick={toggleMenu}>
         {isMenuOpen ? <HiOutlineX /> : <HiOutlineMenu />}
@@ -137,7 +138,7 @@ function Navbar() {
 
       {/* Navigation links */}
       <NavLinks isMenuOpen={isMenuOpen}>
-        <Link to="/home" onClick={handleLinkClick}>
+        <Link to="/" onClick={handleLinkClick}>
           <Icon>
             <HiOutlineHome /> Home
           </Icon>

@@ -2,9 +2,6 @@ import styled from "styled-components";
 import SocialLinks from "../components/contacts/SocialLinks";
 
 const FooterContainer = styled.footer`
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   background-color: #f8fafc;
   display: flex;

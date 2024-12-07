@@ -1,5 +1,7 @@
 import { Outlet } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
+import NavBar from "../components/home/NavBar.jsx";
+import Footer from "./Footer.jsx";
 
 const GlobalStyles = createGlobalStyle`
   * {
@@ -7,16 +9,17 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-
   html, body {
     height: 100%;
     width: 100%;
     font-family: "Arial", sans-serif;
+    line-height: 1.6;
     transition: background-color 0.3s, color 0.3s;
   }
-
   #root {
-    height: 100%; /* Ensure the root element occupies full height */
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -24,11 +27,9 @@ const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
   width: 100%;
+  min-height: 100vh;
   padding: 0 16px;
-  box-sizing: border-box;
 
   @media (max-width: 768px) {
     padding: 10px;
@@ -37,29 +38,33 @@ const LayoutContainer = styled.div`
   @media (max-width: 480px) {
     padding: 8px;
   }
-
-  main {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
 `;
 
-function Applayout() {
+const MainContent = styled.main`
+  width: 100%;
+  max-width: 1200px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  margin-top: 2.5rem;
+`;
+
+function AppLayout() {
   return (
     <>
       <GlobalStyles />
       <LayoutContainer>
-        <main>
+        <NavBar />
+        <MainContent>
           <Outlet />
-        </main>
+        </MainContent>
+        <Footer />
       </LayoutContainer>
     </>
   );
 }
 
-export default Applayout;
+export default AppLayout;

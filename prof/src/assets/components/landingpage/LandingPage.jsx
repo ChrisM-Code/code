@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import IntroText from "../home/IntroText";
-import Footer from "../../ui/Footer";
 
 const Homepage = styled.main`
-  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,7 +57,6 @@ function LandingPage() {
         <IntroText />
         <Link to="/about">Learn More</Link>
       </Homepage>
-      <Footer />
     </>
   );
 }
