@@ -21,7 +21,7 @@ const NavbarContainer = styled.nav`
   height: 4rem;
   background-color: #f8fafc;
   display: flex;
-  justify-content: space-around; 
+  justify-content: space-around;
   align-items: center;
   padding: 0 1rem;
   z-index: 1000;
@@ -138,7 +138,7 @@ function Navbar() {
 
       {/* Navigation links */}
       <NavLinks isMenuOpen={isMenuOpen}>
-        <Link to="/" onClick={handleLinkClick}>
+        <Link to="/home" onClick={handleLinkClick}>
           <Icon>
             <HiOutlineHome /> Home
           </Icon>

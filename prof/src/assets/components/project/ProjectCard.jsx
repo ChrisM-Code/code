@@ -9,7 +9,7 @@ const Container = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: 2rem;
   background-color: #f8fafc;
 
   @media (min-width: 768px) {

@@ -10,23 +10,31 @@ const Homepage = styled.main`
   text-align: center;
   font-family: "Arial", sans-serif;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Ensure content spans full viewport */
   box-sizing: border-box;
-  padding: 0 1rem; /* Add padding for spacing */
+  padding: 0 1rem;
 
   a {
     display: inline-block;
-    padding: 0.5rem;
-    font-size: 1.1rem;
+    padding: 0.5rem 1.2rem; /* Adjust button size */
+    font-size: 1rem;
+    font-weight: bold;
     color: white;
     background-color: #0ea5e9;
-    border-radius: 5px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
-    min-width: 100px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    min-width: 20px;
+    margin: 0;
+    text-align: center;
 
     &:hover {
       background-color: #0056b3;
+      transform: scale(1.05); /* Add hover effect for interactivity */
+    }
+
+    &:active {
+      transform: scale(0.95); /* Click effect */
     }
   }
 
@@ -36,7 +44,7 @@ const Homepage = styled.main`
 
     a {
       font-size: 1rem;
-      padding: 0.8rem;
+      padding: 0.6rem 1.2rem;
     }
   }
 
@@ -45,19 +53,17 @@ const Homepage = styled.main`
 
     a {
       font-size: 0.9rem;
-      padding: 0.6rem;
+      padding: 0.5rem 1rem;
     }
   }
 `;
 
 function LandingPage() {
   return (
-    <>
-      <Homepage>
-        <IntroText />
-        <Link to="/about">Learn More</Link>
-      </Homepage>
-    </>
+    <Homepage>
+      <IntroText />
+      <Link to="/about">Learn More</Link>
+    </Homepage>
   );
 }
 

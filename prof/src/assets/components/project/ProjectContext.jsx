@@ -9,7 +9,7 @@ const projects = [
     live: "https://yourportfolio.com",
     description:
       "A global travel app providing essential tools for travelers, such as trip planning and booking.",
-    image: "../pr.jpg",
+    // image: "../pr.jpg",
   },
   {
     name: "Parking Tracker",
@@ -17,7 +17,7 @@ const projects = [
     live: "https://climatetracker.com",
     description:
       "A tool for monitoring and managing parking spaces, including availability and booking.",
-    image: "https://via.placeholder.com/150",
+    // image: "https://via.placeholder.com/150",
   },
   {
     name: "Pizza Website App",
@@ -25,23 +25,7 @@ const projects = [
     live: "https://plasticwasteapp.com",
     description:
       "A pizza ordering app with a real-time menu and order tracking features.",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Parking Tracker",
-    github: "https://github.com/Rekcah-Chris/KCNP-Parking-System.git",
-    live: "https://climatetracker.com",
-    description:
-      "A tool for monitoring and managing parking spaces, including availability and booking.",
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    name: "Pizza Website App",
-    github: "https://github.com/Rekcah-Chris/Pizza.git",
-    live: "https://plasticwasteapp.com",
-    description:
-      "A pizza ordering app with a real-time menu and order tracking features.",
-    image: "https://via.placeholder.com/150",
+    // image: "https://via.placeholder.com/150",
   },
 ];
 

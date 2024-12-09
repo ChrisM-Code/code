@@ -15,25 +15,17 @@ const slideIn = keyframes`
 
 const GridContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1rem;
   padding: 1.2rem;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin-top: auto;
   box-sizing: border-box;
 
   @media (max-width: 480px) {
-    /* Handle very small screens */
-    grid-template-columns: 1fr;
-  }
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
+    padding: 1rem;
+    grid-template-columns: 1fr; /* Single column on very small screens */
   }
 `;
 
@@ -49,34 +41,53 @@ const ProjectContainer = styled.div`
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
 
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
-const ProjectImage = styled.img`
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-`;
+// const ProjectImage = styled.img`
+//   width: 100%;
+//   max-width: 180px;
+//   height: auto;
+//   aspect-ratio: 1 / 1;
+//   object-fit: cover;
+//   border-radius: 10px;
+//   margin-bottom: 1rem;
+//   background-color: #f3f4f6;
+
+//   @media (max-width: 480px) {
+//     max-width: 120px;
+//     aspect-ratio: 1 / 1;
+//   }
+// `;
 
 const LinkButton = styled.a`
   display: inline-block;
   text-decoration: none;
   color: #fff;
-  padding: 8px 16px;
+  padding: 0.8rem 1.2rem;
   border-radius: 5px;
   margin: 0.5rem;
   background-color: ${(props) => props.bgColor || "#0070f3"};
   font-weight: bold;
   font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 
   &:hover {
     opacity: 0.9;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
   }
 `;
 
@@ -90,9 +101,15 @@ const ShowMoreButton = styled.button`
   cursor: pointer;
   font-size: 1rem;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: #005bb5;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    padding: 8px 16px;
   }
 `;
 
@@ -112,7 +129,7 @@ const TextP = styled.p`
   color: #64748b;
   margin: 0.5rem 0 1rem;
   text-align: center;
-  line-height: 1.2rem;
+  line-height: 1.4rem;
 
   @media (max-width: 768px) {
     font-size: 0.9rem;
@@ -153,7 +170,7 @@ const ProjectGrid = () => {
               opacity: isVisible ? 1 : 0,
             }}
           >
-            <ProjectImage src={project.image} alt={project.name} />
+            {/* <ProjectImage src={project.image} alt={project.name} /> */}
             <Heading2>{project.name}</Heading2>
             <TextP>{project.description}</TextP>
             <ButtonCont>

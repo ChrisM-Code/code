@@ -7,11 +7,11 @@ const IntroContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: ce m nter;
+  text-align: center;
   padding: 1rem;
   box-sizing: border-box;
-
-  overflow: hidden;
+  width: 100%;
+  min-height: 90vh; /* Adjust height to fit content if needed */
   transition: filter 0.3s ease;
   font-family: "Times New Roman", serif;
 
